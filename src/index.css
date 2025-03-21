@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: white;
+  --black: black;
+  --transparent: transparent;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --indigo-300: #a5b4fc;
+  --violet-200: #ddd6fe;
+  --light-aqua: #30EBD6;
+  --dark-aqua: #00A79D;
+  --light-bg: #f8f9fa;
+  --dark-gray: #4a5568;
+}
+
+@layer base {
+  body {
+    @apply text-black bg-light-bg;
+  }
+}
+
+@layer components {
+  .primary-button {
+    @apply inline-block bg-gradient-to-r from-dark-aqua to-light-aqua text-white font-medium py-3 px-8 rounded-full transition-all duration-300;
+  }
+  
+  .section-transition {
+    @apply relative;
+  }
+  
+  .section-transition::after {
+    @apply content-[''] absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-white z-10;
+  }
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+  50% {
+    background-position: 0% 100%, 0% 0%;
+  }
+  100% {
+    background-position: 50% 50%, 50% 50%;
+  }
+}
+
+@layer utilities {
+  .animate-aurora {
+    animation: aurora 20s linear infinite;
+  }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid;
+  width: 0;
+  animation: typing 3.5s steps(40, end) forwards, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--dark-aqua) }
+}
